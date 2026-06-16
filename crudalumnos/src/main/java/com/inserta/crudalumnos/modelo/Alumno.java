@@ -1,8 +1,12 @@
 package com.inserta.crudalumnos.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,5 +33,8 @@ public class Alumno {
     private boolean genero;     // SQL -> genero BOOLEAN
 
     // Se añade las relaciones en la tabla principal
+    // En el mappedBy se pone el nombre de la clase en minúsculas
+    @OneToMany(mappedBy = "alumno")
+    private List<AlumnoAsignatura> alumnoAsignaturas = new ArrayList<>();
     
 }
