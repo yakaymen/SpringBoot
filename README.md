@@ -54,3 +54,22 @@ ng new frontendalumnos --routing --style=css
 cd frontendalumnos
 
 npm install bootstrap
+
+
+## Proceso de Construcción Proyecto
+
+### 1. Backend
+
+#### 1.1 Modelos
+
+- Alumno.java -> Tabla alumnos (incluir anotaciones, @Entity, @Data,...)
+- Asignatura.java -> Tabla asignaturas (incluir anotaciones)
+  - En ambos casos NO incuir relaciones
+- AlumnoAsignatura -> Tabla alumnos_asignaturas (incluir anotaciones)
+  - Añadir los FKs en el @table
+  
+- Añadir las relaciones
+  - Empezar por la relacionada (AlumnoAsignatura) @ManyToOne
+  - Establecer los campos de la relación con OBJETOS!!
+  - Seguir con las tablas principales
+    - Poner el @OneToMany y hacer el List y el ArrayList
