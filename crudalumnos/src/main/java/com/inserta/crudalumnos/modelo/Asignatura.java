@@ -3,6 +3,8 @@ package com.inserta.crudalumnos.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -33,8 +35,8 @@ public class Asignatura {
     @Column(columnDefinition = "TINYINT", nullable = true)
     private int curso;          // SQL -> curso TINYINT NULL
 
-    // Vamos a añadir un campo ENUM
-    // IMPORTANTE: No hace falta crear la tabla del ENUM (aulas)
+    // Genera un Collection que es una tabla auxiliar automática (no entidad)
+    // Colección de datos embebidos (opciones que se van a controlar en el endpoint)
     @ElementCollection
     @CollectionTable(name="asignaturas_aulas",
         joinColumns = @JoinColumn(name="asignatura_id")
@@ -45,5 +47,6 @@ public class Asignatura {
 
     // Falta poner las relaciones con la tabla secundaria
     @OneToMany(mappedBy = "asignatura")
+    @JsonIgnore
     private List<AlumnoAsignatura> alumnoAsignaturas = new ArrayList<>();
 }

@@ -3,6 +3,8 @@ package com.inserta.crudalumnos.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -35,6 +37,7 @@ public class Alumno {
     // Se añade las relaciones en la tabla principal
     // En el mappedBy se pone el nombre de la clase en minúsculas
     @OneToMany(mappedBy = "alumno")
+    @JsonIgnore
     private List<AlumnoAsignatura> alumnoAsignaturas = new ArrayList<>();
     
 }
