@@ -43,6 +43,7 @@ public class AlumnoController {
     // http://localhost:8080/swagger-ui/index.html
 
     // GET por parámetro PK (findById) -> Parámetros van con { }
+    // endpoint -> http://localhost:8080/api/alumnos/consultar/22B
     @GetMapping("/consultar/{nif}")
     @Operation(summary = "Ver alumno por NIF")
     public ResponseEntity<Alumno> verAlumnoPorNIF(@PathVariable String nif){
