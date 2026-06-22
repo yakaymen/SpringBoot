@@ -43,7 +43,8 @@ public class Trabajadores {
     @CollectionTable(name="tipo_trabajador",
         joinColumns = @JoinColumn(name="trabajadores_nif")
     )
-    private List<Float> aulas = new ArrayList<>();
+    @Column(length = 50, nullable = false)
+    private List<String> tipo = new ArrayList<>();
 
 
     @OneToMany(mappedBy = "trabajador")
