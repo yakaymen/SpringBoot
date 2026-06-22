@@ -25,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestParam;
  * - GET R02 → /api/alumnos/consultar/{nif}     → Consulta por PF (nif)
  * - GET R03 → /api/alumnos/consultar/ordenado  → Consulta ordenada por campo=edad
  * - GET R04 → /api/alumnos/consultar/pagina    → Consulta paginada (LIMIT 0,5)
+ * - GET R05 → /api/alumnos/existe/{nif}        → Consulta booleana por PK
+ * - GET R06 → /api/alumnos/contar
  */
 
 
@@ -86,6 +88,29 @@ public class AlumnoController {
         return alumnoRepo.findAll(PageRequest.of(pagina, tam));
     }
     
+    // Ej: http://localhost:8080/api/alumnos/existe/22C
+    // GET R05 → /api/alumnos/existe/{nif}
+    @GetMapping("/existe/{nif}")
+    @Operation(summary = "¿Existe un alumno por su NIF?")
+    public boolean existeAlumno (@PathVariable String nif) {
+        return alumnoRepo.existsById(nif);
+    }
     
+    // Ej: http://localhost:8080/api/alumnos/contar
+    // GET R06 → /api/alumnos/contar
+    @GetMapping("/contar")
+    public long contarAlumnos() {
+        return alumnoRepo.count();
+    }
 
+    // GET R07 → /api/alumnos/consultar/nombre
+    // Paso1: Al no ser método estandar, se añade al repo
+    // Paso2: Se agrega el nuevo método del repo aquí en el controlador
+    @GetMapping("/consultar/nombre")
+    @Operation(summary = "Buscar alumnos que contengan parte de 'nombre'")
+    public String getMethodName(@RequestParam String param) {
+        return new String();
+    }
+    
+    
 }

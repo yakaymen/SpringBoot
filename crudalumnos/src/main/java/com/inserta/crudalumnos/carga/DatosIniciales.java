@@ -46,7 +46,7 @@ public class DatosIniciales implements CommandLineRunner{
             asignaturaRepo.saveAll(List.of(bbdd, prog, fol));
 
             // 3.2 Crear alumnos
-            Alumno parraga = new Alumno("11A", "Párraga", 23, false, new ArrayList<>());
+            Alumno parraga = new Alumno("11A", "Alex Párraga", 23, false, new ArrayList<>());
             Alumno rider = new Alumno("22B", "Rider", 39, false, new ArrayList<>());
             Alumno aleon = new Alumno("33C", "Alex León", 30, false, new ArrayList<>());
             Alumno jaime = new Alumno("44D", "Jaime", 30, false, new ArrayList<>());
