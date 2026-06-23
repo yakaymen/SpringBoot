@@ -47,10 +47,11 @@ public class DatosIniciales implements CommandLineRunner{
 
             // 3.2 Crear alumnos
             Alumno parraga = new Alumno("11A", "Alex Párraga", 23, false, new ArrayList<>());
-            Alumno rider = new Alumno("22B", "Rider", 39, false, new ArrayList<>());
+            Alumno rider = new Alumno("22B", "Miguel Rider", 39, false, new ArrayList<>());
             Alumno aleon = new Alumno("33C", "Alex León", 30, false, new ArrayList<>());
-            Alumno jaime = new Alumno("44D", "Jaime", 30, false, new ArrayList<>());
-            alumnoRepo.saveAll(List.of(parraga, rider, aleon, jaime));
+            Alumno jaime = new Alumno("44D", "Jaime Peña", 30, false, new ArrayList<>());
+            Alumno angela = new Alumno("55E", "Angela Crespo", 20, true, new ArrayList<>());
+            alumnoRepo.saveAll(List.of(parraga, rider, aleon, jaime, angela));
 
             // 3.3 Relacionamos alumnos con asignaturas
             List<AlumnoAsignatura> relaciones = List.of(
@@ -61,7 +62,9 @@ public class DatosIniciales implements CommandLineRunner{
                 new AlumnoAsignatura(null, rider, bbdd),
                 new AlumnoAsignatura(null, rider, prog),
                 new AlumnoAsignatura(null, parraga, fol),
-                new AlumnoAsignatura(null, parraga, bbdd)
+                new AlumnoAsignatura(null, parraga, bbdd),
+                new AlumnoAsignatura(null, angela, bbdd),
+                new AlumnoAsignatura(null, angela, prog)
             );
 
             alumnoAsignaturaRepo.saveAll(relaciones);
