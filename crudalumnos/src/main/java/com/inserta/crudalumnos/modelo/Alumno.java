@@ -32,7 +32,7 @@ public class Alumno {
     private Integer edad;       // SQL -> edad INT NULL
 
     @Column(columnDefinition = "TINYINT(1)")
-    private boolean genero;     // SQL -> genero BOOLEAN
+    private Boolean genero;     // SQL -> genero BOOLEAN
 
     // Se añade las relaciones en la tabla principal
     // En el mappedBy se pone el nombre de la clase en minúsculas

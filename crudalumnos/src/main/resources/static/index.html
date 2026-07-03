@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<!--
+http://localhost:8080/index.html
+https://getbootstrap.com/docs/5.3/getting-started/introduction/
+-->
+
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body class="bg-light text-primary">
+
+    <main class="container mt-2"> <!--(contenedores) (mt-n = margen)-->
+
+
+        <h1 class="display-4">
+            <i class="fa-solid fa-graduation-cap"></i>
+            Academia Arelance
+        </h1>
+        <p class="h2">Proyecto <span class="mark">springboot+Angular</span></p>
+
+
+        <h2>
+            Navegación
+        </h2>
+
+        <p class="text-danger lead text-muted">Esto es un test del proyecto</p>
+        <!-- Si hay conflicto entre clases, prevalece la que tenga mayor prioridad de especificidad ("el ultimo"). -->
+        <!-- ul.list-group.w-50>li*6.list-group-item.list-group-item-action>a{Enlace$} -->
+        <ul class="list-group w-50">
+            <li class="list-group-item list-group-item-action"><a href="">Enlace1</a></li>
+            <li class="list-group-item list-group-item-action"><a href="">Enlace2</a></li>
+            <li class="list-group-item list-group-item-action"><a href="">Enlace3</a></li>
+            <li class="list-group-item list-group-item-action"><a href="">Enlace4</a></li>
+            <li class="list-group-item list-group-item-action"><a href="">Enlace5</a></li>
+            <li class="list-group-item list-group-item-action"><a href="">Enlace6</a></li>
+        </ul>
+        <!---
+ul.list-group.w-50>li*6.list-group-item.list-group-item-action.bg-info>a.text-decoration-none.text-white{Enlace$}
+    -->
+        <ul class="list-group w-50">
+            <li class="list-group-item list-group-item-action bg-warning active"><a href=""
+                    class="text-decoration-none text-white">
+                    <i class="fa-solid fa-user-graduate"></i>
+                    <i class="fa-solid fa-book fa-flip-360"></i>
+                    Alumnos</a></li>
+            <li class="list-group-item list-group-item-action bg-info"><a href=""
+                    class="text-decoration-none text-white">
+                    <i class="bi bi-book"></i> Asignaturas</a></li>
+            <li class="list-group-item list-group-item-action bg-info"><a href=""
+                    class="text-decoration-none text-white">Grid</a></li>
+            <li class="list-group-item list-group-item-action bg-info"><a href=""
+                    class="text-decoration-none text-white">Componentes</a></li>
+            <li class="list-group-item list-group-item-action bg-info"><a href=""
+                    class="text-decoration-none text-white">Formularios</a></li>
+            <li class="list-group-item list-group-item-action bg-info"><a href=""
+                    class="text-decoration-none text-white">Enlace6</a></li>
+        </ul>
+
+    </main>
+
+    Otro párrafo
+
+    <script src="bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

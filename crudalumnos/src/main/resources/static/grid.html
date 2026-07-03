@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<!--
+http://localhost:8080/index.html
+https://getbootstrap.com/docs/5.3/getting-started/introduction/
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        referrerpolicy="no-referrer" />
+    <title>Arelance Grid</title>
+
+    <style>
+        article {
+            background-color: bisque;
+            border: 1px solid blue;
+            padding: 2px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body class="bg-light text-primary-emphasis">
+    <main class="container m-4 w-100 bg-info p-4 text-white">
+        <p>Esto es la pagina principal del proyecto</p>
+
+
+        <h5>3 Columnas iguales</h5>
+        <section class="row">
+            <article class="col-4">col-4</article>
+            <article class="col-4">col-4</article>
+            <article class="col">col-4</article>
+        </section>
+
+        <h5>3 Columnas iguales y el resto para la tercera</h5>
+        <section class="row">
+            <article class="col-3">col-3</article>
+            <article class="col-3">col-3</article>
+            <article class="col">col-6</article>
+        </section>
+
+        <h5>3 Columnas definidas para Moviles, Tablets y PCs</h5>
+        <h6>Móviles (12), Tablets (4,8,12) y PCs (4,4,4)</h6>
+
+        <!-- Si no llega a 12, se queda el hueco-->
+        <section class="row">
+            <article class="col-12 col-md-4 col-xl-3">col-4</article>
+            <article class="col-12 col-md-7 col-xl-3">col-7</article>
+            <article class="col-12 col-md-12 col-xl-3">col-12</article>
+        </section>
+
+        <h5>3 Columnas iguales y el resto para la tercera</h5>
+        <!-- mt(margin-top), mb(margin-botton), ms(margin-start=left), me(margin-end=rigth) 
+         p-3 fuerza el padding en el resto -->
+        <section class="row">
+            <article class="col-3 mt-3 ms-3 me-3 p-3">col-3</article>
+            <article class="col-3">col-3</article>
+            <article class="col">col-6</article>
+        </section>
+
+
+    </main>
+
+    <script src="bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
