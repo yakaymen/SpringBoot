@@ -16,10 +16,10 @@
 
 <body class="bg-light text-primary-emphasis">
     <a href="/" class="btn btn-outline-danger btn-lg me-4 p-1">Volver</a>
-
+    <a href="/grid.html" class="btn btn-warning btn-lg me-4 p-1">Ir al Grid</a>
     <a href="/" class="btn btn-outline-success btn-lg disabled">Adelante</a>
 
-    <h5 class="mb-3">Tipografia</h5>
+    <h5 class="mb-3">Tipografia y Cards</h5>
 
     <section class="d-flex flex-wrap gap-3">
         <article class="card w-25 text-center">
@@ -48,6 +48,48 @@
         </article>
 
     </section>
+
+    <h5 class="mb-3">Badges (insignias o distintivos)</h5>
+    <h6 class="mb-2">Alertas</h6>
+    <!--role es a nivel semántico, no cambia nada-->
+    <p class="alert alert-info" d-flex gap-2 shadow-sm role="alert">
+        <i class="fa-regular fa-circle-user fa-beat" style="color: rgb(109, 0, 0);"></i>
+        <span><strong class="text-info">123</strong>Alumnos registrados
+    </p></span>
+
+
+    <section class="d-flex gap-3">
+        <!--nav>button+span-->
+        <nav><button class="btn btn-outline-success">Todos
+                <span class="badge bg-primary text-light rouder-pill">124</span></button>
+        </nav>
+        <nav>
+            <button class="btn btn-outline-danger position-relative">Mujeres
+                <span class="badge bg-primary text-white rounded-pill 
+                    position-absolute top-0 start-100 translate-middle">57</span></button>
+        </nav>
+        <nav><button class="btn btn-warning position-relative">Hombres
+                <span class="badge bg-primary text-warning rounded-pill
+            position-absolute top-100 start-100 translate-middle">67</span></button>
+        </nav>
+
+
+
+
+    </section>
+
+    <!--p{nbsp;}*10-->
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+
 
     <script src="bootstrap.bundle.min.js"></script>
 </body>
