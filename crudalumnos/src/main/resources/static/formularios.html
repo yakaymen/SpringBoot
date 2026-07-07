@@ -10,31 +10,150 @@
         referrerpolicy="no-referrer" />
 </head>
 
-<body class="bg-light text-primary-emphasis">
-    <nav>
-        <button><span></span></button>
-        <section class="d-flex gap-2">
-            <a routerLink="/index.html" routerLinkActive="btn-primary" class="btn btn-outline-light text-info">
-                Inicio</a>
-            <a routerLink="/grid.html" routerLinkActive="btn-primary" class="btn btn-outline-light text-info">
-                Grid</a>
-            <a routerLink="/Componentes" routerLinkActive="btn-primary" class="btn btn-outline-light text-info">
-                Componentes</a>
-            <a routerLink="/formularios.html" routerLinkActive="btn-primary" class="btn btn-outline-light text-info">
-                Formulario</a>
-        </section>
+<!-- https://getbootstrap.com/docs/5.0/components/offcanvas/ -->
+<!-- https://marketplace.visualstudio.com/items?itemName=hossaini.bootstrap-intellisense -->
 
-        <form class="d-flex" class="input-group">
-            <section>
-                <input type="search" name="buscar" id="buscar" placeholder="Buscar..." class="form-control me-2">
-                <button class="btn btn-outline-light text-info">Buscar</button>
-            </section>
-        </form>
+<body class="bg-light text-primary-emphasis">
+    <!-- barra de navegación superior -->
+    <nav class="navbar  bg-primary px-3">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menulateral"
+            aria-controls="#menulateral">
+            <span class="navbar-toggler-icon"></span>
+        </button> <!-- Hamburguesa -->
+
+        <section class="d-flex gap-1">
+            <a routerLink="/index.html" href="/index.html" routerLinkActive="btn-primary"
+                class="btn btn-outline-light text-info">Inicio</a>
+            <a routerLink="/grid.html" href="/grid.html" routerLinkActive="btn-primary"
+                class="btn btn-outline-light text-info">Grid</a>
+            <a routerLink="/componentes.html" href="/componentes.html" routerLinkActive="btn-primary"
+                class="btn btn-outline-light text-info">Componentes</a>
+            <a routerLink="/formularios.html" href="/formularios.html" routerLinkActive="btn-primary"
+                class="btn btn-outline-light text-info">Formularios</a>
+
+
+            <form class="position-relative col-4">
+                <input type="search" name="buscar" id="buscar" placeholder="Buscar..." class="form-control pe-5">
+                <button class="btn btn-sm text-info position-absolute top-50 end-0 translate-middle-y me-1"
+                    type="submit"><i class="fa-solid fa-magnifying-glass fa-beat fa-canvas-square"
+                        style="color: rgb(135, 9, 31);"></i></button>
+            </form>
+        </section>
+    </nav>
+
+    <!-- Panel lateral (hay que poner IDs!)-->
+    <nav class="offcanvas offcanvas-start bg-primary text-light" tabindex="-1" id="menulateral">
+        <section class="offcanvas-header">
+            <h5 class="offcanvas-title">PRINCIPAL</h5>
+            <button type="button" class="btn btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </section>
+        <section class="offcanvas-body flex-column d-flex gap-1">
+            <a routerLink="/index.html" href="/index.html" routerLinkActive="active"
+                class="nav-link text-light">Inicio</a>
+            <a routerLink="/grid.html" href="/grid.html" routerLinkActive="active" class="nav-link text-light">Grid</a>
+            <a routerLink="/componentes.html" href="/componentes.html" routerLinkActive="active"
+                class="nav-link text-light">Componentes</a>
+
+            <!-- Enlace a la página actual diferente -->
+            <a routerLink="/formularios.html" href="/formularios.html" routerLinkActive="active"
+                class="nav-link active bg-light text-dark rounded fw-bold p-2">Formularios</a>
+        </section>
 
     </nav>
 
-    <h1 class="text-primary-emphasis">Formulario</h1>
-    <p>Esto es la página principal del Proyecto</p>
+    <!-- CONTENIDO PRINCIPAL (FORMULARIO) -->
+    <main class="container my-3">
+        <header class="mb-3">
+            <h1>Formulario</h1>
+            <p class="text-muted m-0">Alta de Alumno/Alumna</p>
+        </header>
+        <!--Mensajes de estado (Ej: Alumno insertado) -->
+        <p id="alerta" class="alert alert-info mb-4 d-none"></p>
+
+
+        <!--Vamos a seleccionar que endpoints usará el formulario-->
+        <section class="card mb-4">
+            <header class="card-header bg-primary text-white">
+                Modo de inserción (Enpoint1 o endpoint2)</header>
+            <fieldset class="card-body">
+                <input class="form-check-input" type="radio" name="modo" value="json" id="modoJSON" checked>
+                <label class="form-check-label" for="modoJSON">JSON
+                    <code class="text-muted">(/api/alumnos/crear)</code></label>
+
+                <br>
+
+                <input class="form-check-input" type="radio" name="modo" value="param" id="modoParam">
+                <label class="form-check-label" for="modoParam">Param
+                    <code class="text-muted">(/api/alumnos/crear/{nif}/{nombre}/{edad}/{genero})</code></label>
+
+            </fieldset>
+        </section>
+
+        <section class="card mb-4">
+            <!--El resto del formulario-->
+            <header class="card-header bg-success text-light">
+                Nuevo Alumno / Alumna
+            </header>
+
+            <form action="" onsubmit="crearAlumno" (); return false;>
+                <section class="card-body">
+                    <fieldset class="row g-3">
+                        <section class="col-12 col-md-3">
+                            NIF<label class="form-label text-danger" for="nif">*</label>
+                            <input class="form-control" type="text" id="nif">
+                        </section>
+
+                        <section class="col-12 col-md-3">
+                            Nombre<label class="form-label text-danger" for="nombre">*</label>
+                            <input class="form-control" type="text" id="nombre">
+                        </section>
+
+                        <section class="col-12 col-md-3">
+                            Edad<label class="form-label text-danger" for="number">*</label>
+                            <input class="form-control" type="text" id="number">
+                        </section>
+
+                        <section class="col-12 col-md-3">
+                            Género<label class="form-label text-danger" for="genero">*</label>
+
+                            <select class="form-select" name="genero" id="genero">
+                                <option disabled selected>Seleccione opción</option>
+                                <option value="1">Mujer</option>
+                                <option value="0">Hombre</option>
+
+                            </select>
+                        </section>
+
+                    </fieldset>
+
+                    <!--Para visualizar lo que envia al endpoint-->
+                    <nav class="card mt-3">
+                        <p class="text-muted mb-1 p-2">Se enviará: </p>
+                        <pre id="preview" class="bg-body-secondary border rounded p-2 mb-1">
+                            <code class="m-2">----</code>
+                        </pre>
+                    </nav>
+                </section>
+
+                <!-- El pie del formulario es para enviar o limpiar-->
+
+                <footer class="card-footer d-print-flex gap-2">
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <button type="reset" class="btn btn-warning" onclick="limpiar();">Limpiar</button>
+                </footer>
+            </form>
+
+
+        </section>
+    </main>
+
+    <footer class="card-footer p-2 mx-auto col-6">
+        <section class="card bg-light">
+            <p class="pt-2 ps-5 text-info">
+                <sup>*</sup> Requerido
+            </p>
+        </section>
+    </footer>
 
     <script src="bootstrap.bundle.min.js"></script>
 </body>
