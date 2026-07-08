@@ -95,28 +95,28 @@
                 Nuevo Alumno / Alumna
             </header>
 
-            <form action="" onsubmit="crearAlumno" (); return false;>
+            <form onsubmit="crearAlumno (); return false;">
                 <section class="card-body">
                     <fieldset class="row g-3">
                         <section class="col-12 col-md-3">
                             NIF<label class="form-label text-danger" for="nif">*</label>
-                            <input class="form-control" type="text" id="nif">
+                            <input class="form-control" type="text" id="nif" required>
                         </section>
 
                         <section class="col-12 col-md-3">
                             Nombre<label class="form-label text-danger" for="nombre">*</label>
-                            <input class="form-control" type="text" id="nombre">
+                            <input class="form-control" type="text" id="nombre" required>
                         </section>
 
                         <section class="col-12 col-md-3">
-                            Edad<label class="form-label text-danger" for="number">*</label>
-                            <input class="form-control" type="text" id="number">
+                            Edad<label class="form-label text-danger" for="edad">*</label>
+                            <input class="form-control" type="number" id="edad" required>
                         </section>
 
                         <section class="col-12 col-md-3">
                             Género<label class="form-label text-danger" for="genero">*</label>
 
-                            <select class="form-select" name="genero" id="genero">
+                            <select class="form-select" name="genero" id="genero" required>
                                 <option disabled selected>Seleccione opción</option>
                                 <option value="1">Mujer</option>
                                 <option value="0">Hombre</option>
@@ -138,7 +138,8 @@
                 <!-- El pie del formulario es para enviar o limpiar-->
 
                 <footer class="card-footer d-print-flex gap-2">
-                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <button type="submit" class="btn btn-success"
+                        onsubmit="crearAlumno(); return false;">Guardar</button>
                     <button type="reset" class="btn btn-warning" onclick="limpiar();">Limpiar</button>
                 </footer>
             </form>
@@ -156,6 +157,62 @@
     </footer>
 
     <script src="bootstrap.bundle.min.js"></script>
+    <!--Debajo del JS de BS defino toda la parte de gestion del formulario-->
+
+    <script>
+        // 1. Recogemos que opción vamos a usar
+        // Esta función devuelve "json" o "param"
+        function modoActual() {
+            return document.querySelector('input[name="modo"]:checked').value;
+        }
+
+        // 2. Leer campos del formulario uno x uno
+        function leerCampos() {
+            const nif = document.getElementById('nif').value.trim();
+            const nombre = document.getElementById('nombre').value.trim();
+            const edad = parseInt(document.getElementById('edad').value); //Es Num!
+            const genero = document.getElementById('genero').value;
+
+            // Devuelve un diccionario (copiado de python)
+            return { nif, nombre, edad, genero: genero === '1' };
+        }
+
+
+        // 3 función para crear el alumno
+        // 3.1 Usar el enpoint /api/alumnos/crear
+        // 3.2 USar el enpoint /api/alumnos/crear/{nif}/{nombre}/{edad}/{genero}
+
+        async function crearAlumno() {
+            const datos = leerCampos();
+            let url;    //endpoint
+            let opciones;
+
+
+            // JSON es el que más se usa
+            if (modoActual() === 'json') {
+                url = '/api/alumnos/crear'
+                opciones = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(datos)
+                };
+            }
+            else {
+                // Usamos string Literal de JS -> ${datos.}
+                url = '/api/alumnos/crear/${datos.nif}/${datos.nombre}/${datos.edad}/${datos.genero}';
+                opciones = { method: 'POST' }
+            }
+
+
+            // await (espera en segundo plano)-> necesita async!!
+            try {
+                const respuesta = await fetch(url, opciones);
+            } catch (error) { }
+
+        }
+    </script>
 </body>
 
 </html>
